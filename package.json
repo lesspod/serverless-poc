@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec babel-node dev-server.js",
+    "build": "babel src --out-dir dist"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,13 @@
     "serverless-http": "^1.8.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/register": "^7.0.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "kexec": "^3.0.0",
+    "nodemon": "^1.18.7",
     "serverless-offline": "^3.31.3"
   }
 }
