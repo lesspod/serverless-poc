@@ -1,6 +1,6 @@
 {
-  "name": "my-express-application",
-  "version": "1.0.0",
+  "name": "lesspod-serverless-poc",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "build": "babel src --out-dir dist"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "khubo",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
     "serverless-http": "^1.8.0"
