@@ -4,6 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import routes from './routes';
 import initDb from './services/db';
+import authMiddleware from './middlewares/authMiddleware';
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(boom());
 app.use(bodyParser.json());
 
 // register route
-app.use('/api', routes);
+app.use('/api', [authMiddleware], routes);
 
 initDb();
 export default app;
