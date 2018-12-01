@@ -1,15 +1,17 @@
 import joi from 'joi';
 import { Router } from 'express';
-import { hashPassword } from '../utils/password.js';
+import { hashPassword, comparePassword } from '../utils/password.js';
+import { generateToken } from '../utils/authToken';
 import { UserModel } from '../models';
-import { signupSchema } from '../validators/user';
+import { authSchema } from '../validators/user';
 
 const router = Router();
 
+// signup
 router.post('/signup', async (req, res) => {
   try {
     let body = req.body;
-    let data = joi.validate(body, signupSchema);
+    let data = joi.validate(body, authSchema);
 
     if (data.error) {
       return res.boom.badRequest(data.error.message);
@@ -27,9 +29,39 @@ router.post('/signup', async (req, res) => {
       message: 'account successfully created'
     });
   } catch (e) {
-    console.log('error', e);
+    console.log('error:', e);
     res.boom.badRequest(e);
   }
 });
 
+// login api
+router.post('/login', async (req, res) => {
+  try {
+    let body = req.body;
+    let data = joi.validate(body, authSchema);
+
+    if (data.error) {
+      return res.boom.badRequest(data.error.message);
+    }
+
+    const User = new UserModel();
+    let user = await User.getByEmail(body.email);
+    if (!user) {
+      return res.boom.badRequest('invalid username or password');
+    }
+
+    let isSamePassword = comparePassword(body.password, user.password);
+    if (!isSamePassword) {
+      return res.boom.badRequest('invalid username or password');
+    }
+
+    let token = generateToken({ userId: user._id });
+    return res.json({
+      token
+    });
+  } catch (e) {
+    console.log('error:', e);
+    res.boom.badRequest(e);
+  }
+});
 export default router;
