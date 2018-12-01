@@ -8,4 +8,4 @@ const {
 export const generateToken = payload =>
   jwt.sign(payload, secret, { expiresIn });
 
-export const verify = token => jwt.verify(token, secret);
+export const decodeToken = token => jwt.verify(token, secret);
