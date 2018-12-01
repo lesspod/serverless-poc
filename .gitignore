@@ -36,3 +36,7 @@ example/dist
 
 # build files
 dist
+
+
+# env file
+.env
