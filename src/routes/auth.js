@@ -10,7 +10,7 @@ const router = Router();
 // signup
 router.post('/signup', async (req, res) => {
   try {
-    let body = req.body;
+    let { body } = req;
     let data = joi.validate(body, authSchema);
 
     if (data.error) {
