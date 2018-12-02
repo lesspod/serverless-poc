@@ -1,10 +1,11 @@
 import joi from 'joi';
 import { Router } from 'express';
+import authMiddleware from '../middlewares/authMiddleware';
 import { PostModel } from '../models';
 import { postSchema } from '../validators/post';
 const router = Router();
 
-router.post('/', async (req, res) => {
+router.post('/', [authMiddleware], async (req, res) => {
   try {
     let { body } = req;
     let data = joi.validate(body, postSchema);
@@ -54,7 +55,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [authMiddleware], async (req, res) => {
   try {
     let { id } = req.params;
     let Post = new PostModel();
