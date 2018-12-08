@@ -20,6 +20,6 @@ Once you've aws ready to work with serverless framework.
 serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 ```
-It will create .aws folder and keep your credentials under the project which will later be used to deploy to the aws lambada.
+It will create .aws folder and keep your credentials there which will later be used to deploy to the aws lambada.
 
 - `sls offline`
