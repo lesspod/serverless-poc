@@ -21,7 +21,7 @@ serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret
 
 ```
 It will create .aws folder and keep your credentials there which will later be used to deploy to the aws lambada.
-
+- `npm run build`
 - `sls offline`
 
 ```
