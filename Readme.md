@@ -23,3 +23,16 @@ serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret
 It will create .aws folder and keep your credentials there which will later be used to deploy to the aws lambada.
 
 - `sls offline`
+
+```
+Rajans-MacBook-Pro:serverless-poc rajanchandi$ sls offline
+Serverless: Starting Offline: dev/us-east-1.
+
+Serverless: Routes for app:
+Serverless: ANY /
+Serverless: ANY /{proxy*}
+
+Serverless: Offline listening on http://localhost:3000
+```
+
+Now, you can use postman to test the api requests.
