@@ -3,7 +3,7 @@ import config from '../config';
 
 const { db: dbConfig } = config;
 
-let uri = process.env.DB_URI || 'mongodb://localhost:27017/test';
+let uri = process.env.DB_URI || 'mongodb://localhost:27017/lptest';
 export default () => {
   mongoose.connect(uri);
 
